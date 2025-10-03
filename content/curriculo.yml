@@ -1,0 +1,213 @@
+nome: Gabriel Coelho
+titulo: "Desenvolvedor Backend Java | Spring Boot | Microserviços"
+resumo: "Desenvolvedor Backend especializado em Java Spring Boot com experiência sólida em desenvolvimento de APIs REST, arquitetura de microserviços, integração de sistemas e bancos de dados relacionais e não-relacionais. Experiência em metodologias ágeis, DevOps e cloud computing."
+
+contato:
+  email: "gabriel.coelho@example.com"
+  telefone: "(11) 99999-9999"
+  linkedin: "https://www.linkedin.com/in/ocoelhogabriel/"
+  github: "https://github.com/ocoelhogabriel"
+  localizacao: "São Paulo, SP - Brasil"
+
+experiencia:
+  - cargo: "Desenvolvedor Backend Sênior"
+    empresa: "Tech Company"
+    periodo: "2022 - presente"
+    localizacao: "São Paulo, SP"
+    tipo: "Full-time"
+    descricao: "Desenvolvimento e manutenção de APIs REST com Spring Boot, implementação de arquitetura de microserviços, integração com bancos de dados PostgreSQL e MongoDB, implementação de testes automatizados e deploy com Docker e Kubernetes."
+    conquistas:
+      - "Reduziu em 40% o tempo de resposta das APIs principais através de otimizações de consultas SQL e implementação de cache Redis"
+      - "Liderou a migração de arquitetura monolítica para microserviços, resultando em 60% de melhoria na escalabilidade"
+      - "Implementou pipeline CI/CD com Jenkins e Docker, reduzindo tempo de deploy de 2 horas para 15 minutos"
+    tecnologias:
+      - "Java 11/17"
+      - "Spring Boot"
+      - "Spring Security"
+      - "PostgreSQL"
+      - "MongoDB"
+      - "Redis"
+      - "Docker"
+      - "Kubernetes"
+      - "AWS"
+      - "Jenkins"
+
+  - cargo: "Desenvolvedor Full Stack"
+    empresa: "Startup XYZ"
+    periodo: "2020 - 2022"
+    localizacao: "Remote"
+    tipo: "Full-time"
+    descricao: "Desenvolvimento de aplicações web completas com Vue.js no frontend e Spring Boot no backend. Participação ativa em definições de arquitetura, code reviews e mentoria de desenvolvedores júnior."
+    conquistas:
+      - "Desenvolveu do zero sistema de e-commerce que processou mais de R$ 1 milhão em vendas no primeiro ano"
+      - "Implementou sistema de pagamentos integrado com múltiplos gateways (PagSeguro, Mercado Pago, Stripe)"
+      - "Criou dashboard administrativo com métricas em tempo real usando Chart.js e WebSockets"
+    tecnologias:
+      - "Java 8/11"
+      - "Spring Boot"
+      - "Vue.js 2/3"
+      - "MySQL"
+      - "Docker"
+      - "AWS EC2/RDS"
+
+  - cargo: "Desenvolvedor Java Júnior"
+    empresa: "Software House ABC"
+    periodo: "2019 - 2020"
+    localizacao: "São Paulo, SP"
+    tipo: "Full-time"
+    descricao: "Primeiro emprego como desenvolvedor, focado em manutenção e desenvolvimento de novas funcionalidades em sistemas legados usando Java EE, JSF e Oracle Database."
+    conquistas:
+      - "Migrou 5 módulos críticos de sistema legado para nova arquitetura baseada em Spring Boot"
+      - "Participou de mais de 15 projetos de manutenção evolutiva com alta qualidade"
+      - "Recebeu prêmio de 'Funcionário do Mês' por 2 meses consecutivos devido à proatividade e qualidade do código"
+    tecnologias:
+      - "Java 8"
+      - "JSF"
+      - "JPA/Hibernate"
+      - "Oracle Database"
+      - "Maven"
+      - "SVN"
+
+educacao:
+  - curso: "Bacharelado em Ciência da Computação"
+    instituicao: "Universidade Federal de São Paulo (UNIFESP)"
+    periodo: "2016 - 2020"
+    status: "Concluído"
+    descricao: "Formação sólida em algoritmos, estruturas de dados, engenharia de software, banco de dados e programação orientada a objetos."
+  
+  - curso: "Técnico em Informática para Internet"
+    instituicao: "ETEC - Escola Técnica Estadual"
+    periodo: "2014 - 2016"
+    status: "Concluído"
+    descricao: "Fundamentos de programação web, banco de dados e desenvolvimento de sistemas."
+
+certificacoes:
+  - nome: "AWS Certified Developer - Associate"
+    emissor: "Amazon Web Services"
+    data: "2023"
+    validade: "2026"
+    credencial: "AWS-CERT-DEV-2023"
+  
+  - nome: "Oracle Certified Professional: Java SE 11 Developer"
+    emissor: "Oracle"
+    data: "2022"
+    validade: "Sem validade"
+    credencial: "OCP-JAVA-11-2022"
+  
+  - nome: "Spring Professional Certification"
+    emissor: "VMware"
+    data: "2021"
+    validade: "2024"
+    credencial: "SPRING-PRO-2021"
+
+habilidades:
+  backend:
+    - nome: "Java"
+      nivel: 95
+      experiencia: "5+ anos"
+    - nome: "Spring Boot"
+      nivel: 90
+      experiencia: "4+ anos"
+    - nome: "Spring Security"
+      nivel: 80
+      experiencia: "3+ anos"
+    - nome: "JPA/Hibernate"
+      nivel: 85
+      experiencia: "4+ anos"
+    - nome: "Maven/Gradle"
+      nivel: 80
+      experiencia: "4+ anos"
+  
+  bancos_dados:
+    - nome: "PostgreSQL"
+      nivel: 85
+      experiencia: "4+ anos"
+    - nome: "MySQL"
+      nivel: 80
+      experiencia: "3+ anos"
+    - nome: "MongoDB"
+      nivel: 75
+      experiencia: "2+ anos"
+    - nome: "Redis"
+      nivel: 70
+      experiencia: "2+ anos"
+  
+  frontend:
+    - nome: "Vue.js"
+      nivel: 80
+      experiencia: "3+ anos"
+    - nome: "Nuxt.js"
+      nivel: 75
+      experiencia: "2+ anos"
+    - nome: "JavaScript/TypeScript"
+      nivel: 85
+      experiencia: "4+ anos"
+    - nome: "HTML/CSS"
+      nivel: 85
+      experiencia: "5+ anos"
+    - nome: "TailwindCSS"
+      nivel: 80
+      experiencia: "2+ anos"
+  
+  devops_cloud:
+    - nome: "Docker"
+      nivel: 85
+      experiencia: "3+ anos"
+    - nome: "Kubernetes"
+      nivel: 70
+      experiencia: "1+ ano"
+    - nome: "AWS"
+      nivel: 75
+      experiencia: "2+ anos"
+    - nome: "Jenkins"
+      nivel: 70
+      experiencia: "2+ anos"
+    - nome: "Git/GitHub"
+      nivel: 90
+      experiencia: "5+ anos"
+  
+  ferramentas:
+    - "IntelliJ IDEA"
+    - "Visual Studio Code"
+    - "Postman"
+    - "DBeaver"
+    - "Jira"
+    - "Confluence"
+    - "Slack"
+    - "Teams"
+
+soft_skills:
+  - "Trabalho em equipe"
+  - "Liderança técnica"
+  - "Comunicação efetiva"
+  - "Resolução de problemas"
+  - "Aprendizado contínuo"
+  - "Mentoria"
+  - "Metodologias ágeis (Scrum/Kanban)"
+  - "Code Review"
+
+idiomas:
+  - idioma: "Português"
+    nivel: "Nativo"
+  - idioma: "Inglês"
+    nivel: "Intermediário/Avançado"
+    descricao: "Leitura e escrita fluente, conversação intermediária"
+  - idioma: "Espanhol"
+    nivel: "Básico"
+    descricao: "Compreensão básica"
+
+projetos_destaque:
+  - nome: "Sistema de E-commerce B2B"
+    descricao: "Plataforma completa de e-commerce B2B com gestão de pedidos, estoque, pagamentos e relatórios em tempo real."
+    tecnologias: ["Spring Boot", "Vue.js", "PostgreSQL", "Redis", "Docker", "AWS"]
+    resultado: "Processamento de R$ 1M+ em vendas no primeiro ano"
+  
+  - nome: "API Gateway Corporativo"
+    descricao: "Gateway centralizado para gerenciamento de APIs internas, com autenticação, rate limiting e monitoramento."
+    tecnologias: ["Spring Cloud Gateway", "OAuth2", "Prometheus", "Grafana", "Kubernetes"]
+    resultado: "Centralização de 15+ APIs com redução de 50% no tempo de resposta médio"
+  
+  - nome: "Sistema de Monitoramento IoT"
+    descricao: "Sistema para coleta e análise de dados de sensores IoT em tempo real para indústria 4.0."
+    tecnologias: ["Spring Boot", "MongoDB", "RabbitMQ", "InfluxDB", "Docker"]
+    resultado: "Monitoramento de 500+ sensores com processamento de 1M+ eventos/dia"
