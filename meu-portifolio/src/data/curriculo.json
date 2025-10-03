@@ -1,0 +1,54 @@
+{
+  "nome": "Gabriel Coelho",
+  "resumo": "Minha experiência é voltada principalmente para o backend em Java e Spring Boot, incluindo integrações complexas via APIs REST, WebSockets e protocolos TCP/IP. Também atuo com bancos de dados relacionais como PostgreSQL, SQL Server e Oracle, aplicando boas práticas de modelagem, otimização e versionamento. No frontend, possuo conhecimento em React e Next.js, que utilizo de forma complementar em projetos. Além disso, aplico práticas de DevOps, testes, logs estruturados e monitoramento para garantir confiabilidade em produção.",
+  "experiencia": [
+    {
+      "cargo": "Desenvolvedor Full Stack - Java",
+      "empresa": "Telemática Sistemas Inteligentes",
+      "periodo": "julho de 2023 - Presente (2 anos 4 meses)",
+      "descricao": "Experiência em bancos de dados Oracle, SQL Server e PostgreSQL, com foco em modelagem, queries otimizadas, procedures e manutenção de dados críticos. Implementação de Spring Security com JWT (Auth0) para autenticação e autorização seguras. Criação e manutenção de APIs REST de alta performance, integradas a sistemas internos e externos. Atuação em sistemas de comunicação baseados no protocolo TCP/IP, incluindo drivers de comunicação, sockets e integrações assíncronas. Experiência em Sistemas de Gestão de Acesso, com foco em permissões e controle, portaria de gestão de pontos (1510 e 671) em dispositivos. Participação em projetos de Sistemas de Integração entre múltiplas plataformas, promovendo interoperabilidade e consistência de dados. Desenvolvimento de softwares customizados, adequados às necessidades específicas de clientes e projetos estratégicos. Envolvimento ativo em cerimônias ágeis para definição de requisitos, priorização de entregas e colaboração com times multidisciplinares."
+    }
+  ],
+  "formacao": [
+    {
+      "instituicao": "Full Cycle",
+      "curso": "MBA, Arquitetura de Software",
+      "periodo": "junho de 2025 - dezembro de 2026"
+    },
+    {
+      "instituicao": "Unoeste",
+      "curso": "CST, Análise e Desenvolvimento de Sistemas",
+      "periodo": "fevereiro de 2022 - julho de 2024"
+    },
+    {
+      "instituicao": "Microlins",
+      "curso": "Técnico, Hardware"
+    }
+  ],
+  "contato": {
+    "telefone": "(19) 99735-7450",
+    "email": "gabriel.coelho.hgc@outlook.com.br",
+    "linkedin": "https://www.linkedin.com/in/ocoelhogabriel",
+    "github": "https://github.com/ocoelhogabriel"
+  },
+  "habilidades": [
+    "Java",
+    "Spring Boot",
+    "Spring Security",
+    "JPA",
+    "Hibernate",
+    "Swagger",
+    "PostgreSQL",
+    "SQL Server",
+    "Oracle",
+    "React",
+    "Next.js",
+    "Docker",
+    "Linux",
+    "JSON Web Token (JWT)",
+    "SOLID",
+    "REST",
+    "WebSocket",
+    "TCP/IP"
+  ]
+}
