@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 
 type Repo = {
   id: number;
@@ -18,13 +19,22 @@ export default function Projects() {
   }, []);
 
   return (
-    <div className="p-6 grid gap-4 md:grid-cols-2">
-      {repos.map(repo => (
-        <a key={repo.id} href={repo.html_url} target="_blank" className="border p-4 rounded hover:shadow">
-          <h3 className="font-bold">{repo.name}</h3>
-          <p>{repo.description}</p>
-        </a>
-      ))}
-    </div>
+    <section className="flex flex-col items-center justify-center min-h-[60vh] px-4 py-12">
+      <h1 className="text-3xl md:text-4xl font-bold mb-8 text-center">Projetos</h1>
+      <div className="w-full max-w-5xl grid gap-6 md:grid-cols-2">
+        {repos.map(repo => (
+          <Card key={repo.id} className="transition-shadow hover:shadow-lg">
+            <a href={repo.html_url} target="_blank" rel="noopener noreferrer">
+              <CardHeader>
+                <CardTitle className="text-lg md:text-xl font-semibold mb-1">{repo.name}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground min-h-[2.5em]">{repo.description || "Sem descrição."}</p>
+              </CardContent>
+            </a>
+          </Card>
+        ))}
+      </div>
+    </section>
   );
 }
