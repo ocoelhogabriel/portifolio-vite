@@ -1,7 +1,14 @@
 import { useEffect, useState } from "react";
 
+type Repo = {
+  id: number;
+  name: string;
+  html_url: string;
+  description: string | null;
+};
+
 export default function Projects() {
-  const [repos, setRepos] = useState<any[]>([]);
+  const [repos, setRepos] = useState<Repo[]>([]);
 
   useEffect(() => {
     fetch("https://api.github.com/users/ocoelhogabriel/repos")

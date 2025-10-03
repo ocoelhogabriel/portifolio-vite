@@ -1,6 +1,7 @@
 
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import cv from "../data/curriculo.json";
-import { Card, CardHeader, CardTitle, CardContent } from "../components/ui/card";
+
 
 interface Experiencia {
   cargo: string;
