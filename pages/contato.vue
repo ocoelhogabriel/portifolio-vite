@@ -1,5 +1,9 @@
 
 <script setup lang="ts">
+import { ref } from 'vue'
+import { useToast } from '@/composables/useToast'
+import { useHead } from 'nuxt/app'
+// useHead is auto-imported by Nuxt; comment retained for clarity
 const form = ref({
   name: '',
   email: '',
@@ -7,6 +11,8 @@ const form = ref({
 })
 
 const isSubmitting = ref(false)
+
+const { push: pushToast } = useToast()
 
 const submitForm = async () => {
   isSubmitting.value = true
@@ -19,11 +25,7 @@ const submitForm = async () => {
   isSubmitting.value = false
   
   // Mostrar notificação de sucesso (usando Nuxt UI)
-  useToast().add({
-    title: 'Mensagem enviada!',
-    description: 'Obrigado pelo contato. Retornarei em breve.',
-    color: 'green'
-  })
+  pushToast({ title: 'Mensagem enviada!', description: 'Obrigado pelo contato. Retornarei em breve.' })
 }
 
 useHead({
@@ -49,103 +51,46 @@ useHead({
       </div>
 
       <div class="grid md:grid-cols-2 gap-8">
-        <!-- Formulário -->
-        <UCard>
-          <template #header>
-            <h2 class="text-xl font-semibold">Envie uma mensagem</h2>
-          </template>
-          
-          <UForm :state="form" @submit="submitForm" class="space-y-4">
-            <UFormGroup label="Nome" required>
-              <UInput 
-                v-model="form.name" 
-                placeholder="Seu nome completo"
-                required
-              />
-            </UFormGroup>
-            
-            <UFormGroup label="Email" required>
-              <UInput 
-                v-model="form.email" 
-                type="email"
-                placeholder="seu@email.com"
-                required
-              />
-            </UFormGroup>
-            
-            <UFormGroup label="Mensagem" required>
-              <UTextarea 
-                v-model="form.message" 
-                placeholder="Sua mensagem..."
-                rows="5"
-                required
-              />
-            </UFormGroup>
-            
-            <UButton 
-              type="submit" 
-              :loading="isSubmitting"
-              size="lg" 
-              class="w-full"
-            >
-              Enviar Mensagem
-            </UButton>
-          </UForm>
-        </UCard>
-
-        <!-- Informações de contato -->
+        <UiCard>
+          <template #header><h2 class="text-xl font-semibold">Envie uma mensagem</h2></template>
+          <form @submit.prevent="submitForm" class="space-y-4">
+            <div class="space-y-2">
+              <label class="text-sm font-medium">Nome</label>
+              <UiInput v-model="form.name" placeholder="Seu nome completo" required />
+            </div>
+            <div class="space-y-2">
+              <label class="text-sm font-medium">Email</label>
+              <UiInput v-model="form.email" type="email" placeholder="seu@email.com" required />
+            </div>
+            <div class="space-y-2">
+              <label class="text-sm font-medium">Mensagem</label>
+              <UiTextarea v-model="form.message" placeholder="Sua mensagem..." :rows="5" required />
+            </div>
+            <UiButton type="submit" :loading="isSubmitting" class="w-full" size="lg">Enviar Mensagem</UiButton>
+          </form>
+        </UiCard>
         <div class="space-y-6">
-          <UCard>
-            <template #header>
-              <h2 class="text-xl font-semibold">Informações de Contato</h2>
-            </template>
-            
-            <div class="space-y-4">
-              <div class="flex items-center space-x-3">
-                <UIcon name="i-heroicons-envelope" class="text-primary-500" />
-                <a 
-                  href="mailto:gabriel@example.com" 
-                  class="text-gray-700 dark:text-gray-300 hover:text-primary-500 transition-colors"
-                >
-                  gabriel@example.com
-                </a>
+          <UiCard>
+            <template #header><h2 class="text-xl font-semibold">Informações de Contato</h2></template>
+            <div class="space-y-4 text-sm">
+              <div class="flex items-center gap-3">
+                <span class="i-heroicons-envelope h-5 w-5 text-primary" />
+                <a href="mailto:gabriel@example.com" class="hover:underline">gabriel@example.com</a>
               </div>
-              
-              <div class="flex items-center space-x-3">
-                <UIcon name="i-simple-icons-github" class="text-primary-500" />
-                <a 
-                  href="https://github.com/ocoelhogabriel" 
-                  target="_blank"
-                  class="text-gray-700 dark:text-gray-300 hover:text-primary-500 transition-colors"
-                >
-                  @ocoelhogabriel
-                </a>
+              <div class="flex items-center gap-3">
+                <span class="i-simple-icons-github h-5 w-5 text-primary" />
+                <a href="https://github.com/ocoelhogabriel" target="_blank" class="hover:underline">@ocoelhogabriel</a>
               </div>
-              
-              <div class="flex items-center space-x-3">
-                <UIcon name="i-simple-icons-linkedin" class="text-primary-500" />
-                <a 
-                  href="https://linkedin.com/in/gabriel-coelho" 
-                  target="_blank"
-                  class="text-gray-700 dark:text-gray-300 hover:text-primary-500 transition-colors"
-                >
-                  Gabriel Coelho
-                </a>
+              <div class="flex items-center gap-3">
+                <span class="i-simple-icons-linkedin h-5 w-5 text-primary" />
+                <a href="https://linkedin.com/in/gabriel-coelho" target="_blank" class="hover:underline">Gabriel Coelho</a>
               </div>
             </div>
-          </UCard>
-
-          <UCard>
-            <template #header>
-              <h2 class="text-xl font-semibold">Vamos nos conectar!</h2>
-            </template>
-            
-            <p class="text-gray-600 dark:text-gray-300">
-              Estou sempre aberto a novas oportunidades e projetos interessantes. 
-              Se você tem uma ideia legal ou quer apenas conversar sobre tecnologia, 
-              não hesite em entrar em contato!
-            </p>
-          </UCard>
+          </UiCard>
+          <UiCard>
+            <template #header><h2 class="text-xl font-semibold">Vamos nos conectar!</h2></template>
+            <p class="text-muted-foreground text-sm leading-relaxed">Estou sempre aberto a novas oportunidades e projetos interessantes. Se você tem uma ideia legal ou quer apenas conversar sobre tecnologia, não hesite em entrar em contato!</p>
+          </UiCard>
         </div>
       </div>
     </div>

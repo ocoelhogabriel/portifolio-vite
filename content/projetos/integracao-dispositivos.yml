@@ -1,0 +1,17 @@
+title: "Integração TCP/IP de Dispositivos"
+slug: integracao-dispositivos
+descricao: |
+  Módulo de comunicação para captura, normalização e transmissão de eventos de dispositivos
+  conectados via sockets TCP/IP, garantindo confiabilidade e resiliência.
+resultado: "Base arquitetural para expansão de comunicação de dispositivos em produção"
+tecnologias:
+  - Java
+  - Spring Boot
+  - TCP/IP
+  - Docker
+  - WebSocket
+links:
+  repo: null
+  docs: null
+status: "ativo"
+tags: [iot, comunicacao, tcp]

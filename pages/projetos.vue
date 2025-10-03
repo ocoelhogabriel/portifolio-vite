@@ -1,35 +1,15 @@
 
 <script setup lang="ts">
-// Dados mockados para evitar problemas com API do GitHub por enquanto
-const repos = ref([
-  {
-    id: 1,
-    name: 'portfolio',
-    description: 'Meu portfólio pessoal desenvolvido com Nuxt 3',
-    html_url: 'https://github.com/ocoelhogabriel/portfolio',
-    language: 'Vue',
-    stargazers_count: 0,
-    updated_at: '2025-10-03'
-  },
-  {
-    id: 2,
-    name: 'api-rest-java',
-    description: 'API REST desenvolvida com Spring Boot e PostgreSQL',
-    html_url: 'https://github.com/ocoelhogabriel/api-rest-java',
-    language: 'Java',
-    stargazers_count: 5,
-    updated_at: '2025-09-20'
-  },
-  {
-    id: 3,
-    name: 'docker-compose-services',
-    description: 'Configurações Docker Compose para diversos serviços',
-    html_url: 'https://github.com/ocoelhogabriel/docker-compose-services',
-    language: 'Docker',
-    stargazers_count: 2,
-    updated_at: '2025-09-15'
-  }
-])
+import { useHead } from 'nuxt/app';
+
+interface ProjetoDoc { title: string; slug: string; descricao: string; resultado?: string; tecnologias: string[]; status?: string; tags?: string[]; links?: Record<string, string | null> }
+// @ts-ignore queryContent runtime import
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+const { data: projetos } = await useAsyncData<ProjetoDoc[]>(
+  'projetos',
+  () => queryContent('projetos').find()
+)
 
 useHead({
   title: 'Projetos | Gabriel Coelho',
@@ -53,42 +33,22 @@ useHead({
     </div>
 
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <UCard v-for="repo in repos" :key="repo.id" class="hover:shadow-lg transition-shadow">
+      <UiCard v-for="proj in projetos" :key="proj.slug" class="hover:shadow-lg transition-shadow">
         <template #header>
           <div class="flex justify-between items-start">
-            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-              {{ repo.name }}
-            </h3>
-            <UBadge v-if="repo.language" :label="repo.language" variant="soft" />
+            <h3 class="text-lg font-semibold">{{ proj.title }}</h3>
+            <UiBadge v-if="proj.status" variant="secondary">{{ proj.status }}</UiBadge>
           </div>
         </template>
-        
-        <p class="text-gray-600 dark:text-gray-300 mb-4">
-          {{ repo.description || 'Sem descrição disponível' }}
-        </p>
-        
-        <div class="flex justify-between items-center">
-          <div class="flex items-center space-x-4 text-sm text-gray-500 dark:text-gray-400">
-            <span class="flex items-center">
-              <UIcon name="i-heroicons-star" class="mr-1" />
-              {{ repo.stargazers_count }}
-            </span>
-            <span>
-              {{ new Date(repo.updated_at).toLocaleDateString('pt-BR') }}
-            </span>
-          </div>
-          
-          <UButton 
-            :to="repo.html_url" 
-            external 
-            target="_blank"
-            variant="outline" 
-            size="sm"
-          >
-            Ver no GitHub
-          </UButton>
+        <p class="text-sm text-muted-foreground mb-4 min-h-[60px]">{{ proj.descricao }}</p>
+        <div class="flex flex-wrap gap-2 mb-4">
+          <UiBadge variant="outline" v-for="tech in proj.tecnologias" :key="tech">{{ tech }}</UiBadge>
         </div>
-      </UCard>
+        <div class="flex justify-between items-center text-xs text-muted-foreground">
+          <span v-if="proj.resultado" class="line-clamp-1">{{ proj.resultado }}</span>
+          <UiButton :to="`/projetos/${proj.slug}`" variant="outline" size="sm">Detalhes</UiButton>
+        </div>
+      </UiCard>
     </div>
   </div>
 </template>

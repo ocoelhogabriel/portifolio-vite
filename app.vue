@@ -4,7 +4,7 @@
       <NuxtPage />
     </NuxtLayout>
     
-    <!-- Notifications container para toasts -->
-    <UNotifications />
+  <!-- Toaster -->
+  <UiToaster />
   </div>
 </template>

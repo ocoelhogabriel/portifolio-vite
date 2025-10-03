@@ -1,52 +1,19 @@
 
 <script setup lang="ts">
-const experiencias = [
-  {
-    id: 1,
-    cargo: 'Desenvolvedor Backend Sênior',
-    empresa: 'Tech Company',
-    periodo: '2022 - presente',
-    tipo: 'Full-time',
-    localizacao: 'São Paulo, SP',
-    descricao: 'Desenvolvimento de APIs REST com Spring Boot, integração com bancos de dados PostgreSQL e MongoDB, implementação de testes automatizados e deploy com Docker.',
-    tecnologias: ['Java', 'Spring Boot', 'PostgreSQL', 'Docker', 'AWS', 'Redis'],
-    conquistas: [
-      'Reduzi em 40% o tempo de resposta das APIs principais',
-      'Implementei arquitetura de microsserviços para 3 sistemas críticos',
-      'Liderei equipe de 4 desenvolvedores júnior e pleno'
-    ]
-  },
-  {
-    id: 2,
-    cargo: 'Desenvolvedor Full Stack',
-    empresa: 'Startup XYZ',
-    periodo: '2020 - 2022',
-    tipo: 'Full-time',
-    localizacao: 'Remote',
-    descricao: 'Desenvolvimento de aplicações web com Vue.js no frontend e Spring Boot no backend. Participação ativa em definições de arquitetura e code reviews.',
-    tecnologias: ['Java', 'Spring Boot', 'Vue.js', 'MySQL', 'Docker'],
-    conquistas: [
-      'Desenvolvi sistema de e-commerce do zero que processou R$ 1M+ em vendas',
-      'Implementei sistema de pagamentos integrado com múltiplos gateways',
-      'Criei dashboard administrativo com métricas em tempo real'
-    ]
-  },
-  {
-    id: 3,
-    cargo: 'Desenvolvedor Java Júnior',
-    empresa: 'Software House ABC',
-    periodo: '2019 - 2020',
-    tipo: 'Full-time',
-    localizacao: 'São Paulo, SP',
-    descricao: 'Primeiro emprego como desenvolvedor, focado em manutenção e desenvolvimento de novas funcionalidades em sistemas legados.',
-    tecnologias: ['Java', 'JSF', 'JPA', 'Oracle DB', 'SVN'],
-    conquistas: [
-      'Migrei 5 módulos de sistema legado para nova arquitetura',
-      'Participei de 15+ projetos de manutenção evolutiva',
-      'Recebi prêmio de "Funcionário do Mês" por 2 vezes'
-    ]
-  }
-]
+import { useHead } from 'nuxt/app';
+
+interface ExperienciaDoc {
+  title: string; slug: string; cargo: string; periodo: string; localizacao?: string; tipo?: string;
+  resumo?: string; responsabilidades?: string[]; conquistas?: string[]; stack_principal?: string[];
+  tecnologias?: Record<string, any>;
+}
+// @ts-ignore queryContent é injetado pelo módulo @nuxt/content em runtime
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+const { data: experiencias } = await useAsyncData<ExperienciaDoc[]>(
+  'experiencias',
+  () => queryContent('experiencia').where({ _partial: false }).find()
+)
 
 useHead({
   title: 'Experiência | Gabriel Coelho',
@@ -76,13 +43,13 @@ useHead({
         <div class="absolute left-8 top-0 bottom-0 w-0.5 bg-gray-200 dark:bg-gray-700"></div>
         
         <div class="space-y-12">
-          <div v-for="(exp, index) in experiencias" :key="exp.id" class="relative">
+          <div v-for="exp in experiencias" :key="exp.slug" class="relative">
             <!-- Bolinha na timeline -->
             <div class="absolute left-6 w-4 h-4 bg-primary-500 rounded-full border-4 border-white dark:border-gray-900"></div>
             
             <!-- Card de experiência -->
             <div class="ml-20">
-              <UCard class="hover:shadow-lg transition-shadow">
+              <UiCard class="hover:shadow-lg transition-shadow">
                 <template #header>
                   <div class="flex justify-between items-start">
                     <div>
@@ -90,19 +57,19 @@ useHead({
                         {{ exp.cargo }}
                       </h3>
                       <p class="text-primary-600 dark:text-primary-400 font-medium">
-                        {{ exp.empresa }}
+                        {{ exp.title }}
                       </p>
                     </div>
-                    <UBadge :label="exp.tipo" variant="soft" />
+                    <UiBadge variant="secondary">{{ exp.tipo }}</UiBadge>
                   </div>
                   
                   <div class="flex items-center space-x-4 mt-2 text-sm text-gray-500 dark:text-gray-400">
                     <span class="flex items-center">
-                      <UIcon name="i-heroicons-calendar" class="mr-1" />
+                      <UiIcon name="i-heroicons-calendar" class="mr-1 h-4 w-4" />
                       {{ exp.periodo }}
                     </span>
                     <span class="flex items-center">
-                      <UIcon name="i-heroicons-map-pin" class="mr-1" />
+                      <UiIcon name="i-heroicons-map-pin" class="mr-1 h-4 w-4" />
                       {{ exp.localizacao }}
                     </span>
                   </div>
@@ -111,7 +78,7 @@ useHead({
                 <div class="space-y-6">
                   <!-- Descrição -->
                   <p class="text-gray-700 dark:text-gray-300">
-                    {{ exp.descricao }}
+                      {{ exp.resumo }}
                   </p>
                   
                   <!-- Tecnologias -->
@@ -120,13 +87,11 @@ useHead({
                       Tecnologias utilizadas:
                     </h4>
                     <div class="flex flex-wrap gap-2">
-                      <UBadge 
-                        v-for="tech in exp.tecnologias" 
-                        :key="tech" 
-                        :label="tech" 
-                        size="sm"
+                      <UiBadge
+                        v-for="tech in (exp.stack_principal || [])"
+                        :key="tech"
                         variant="outline"
-                      />
+                      >{{ tech }}</UiBadge>
                     </div>
                   </div>
                   
@@ -137,11 +102,11 @@ useHead({
                     </h4>
                     <ul class="space-y-2">
                       <li 
-                        v-for="conquista in exp.conquistas" 
+                        v-for="conquista in (exp.conquistas || [])" 
                         :key="conquista"
                         class="flex items-start space-x-2"
                       >
-                        <UIcon name="i-heroicons-check-circle" class="text-green-500 mt-0.5 flex-shrink-0" />
+                        <UiIcon name="i-heroicons-check-circle" class="text-green-500 mt-0.5 h-4 w-4 flex-shrink-0" />
                         <span class="text-gray-700 dark:text-gray-300 text-sm">
                           {{ conquista }}
                         </span>
@@ -149,7 +114,7 @@ useHead({
                     </ul>
                   </div>
                 </div>
-              </UCard>
+              </UiCard>
             </div>
           </div>
         </div>
@@ -165,12 +130,12 @@ useHead({
         Estou sempre aberto a novas oportunidades e projetos desafiadores
       </p>
       <div class="flex justify-center gap-4">
-        <UButton to="/contato" size="lg">
+        <UiButton to="/contato" size="lg">
           Entre em contato
-        </UButton>
-        <UButton to="/curriculo" variant="outline" size="lg">
+        </UiButton>
+        <UiButton to="/curriculo" variant="outline" size="lg">
           Ver currículo completo
-        </UButton>
+        </UiButton>
       </div>
     </div>
   </div>

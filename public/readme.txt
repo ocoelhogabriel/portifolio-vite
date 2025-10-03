@@ -1,0 +1,1 @@
+Static assets directory placeholder. Add favicons, images, robots.txt etc here.

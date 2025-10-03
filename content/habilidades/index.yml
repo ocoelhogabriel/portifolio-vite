@@ -1,0 +1,57 @@
+grupos:
+  - nome: Backend
+    itens:
+      - nome: Java
+        nivel: 95
+      - nome: Spring Boot
+        nivel: 90
+      - nome: Spring Security
+        nivel: 80
+      - nome: JPA/Hibernate
+        nivel: 85
+      - nome: APIs REST
+        nivel: 90
+      - nome: WebSocket
+        nivel: 75
+      - nome: TCP/IP
+        nivel: 70
+  - nome: Frontend
+    itens:
+      - nome: React
+        nivel: 60
+      - nome: Next.js
+        nivel: 55
+      - nome: Vue.js
+        nivel: 70
+      - nome: Nuxt.js
+        nivel: 65
+      - nome: TypeScript
+        nivel: 80
+  - nome: Bancos de Dados
+    itens:
+      - nome: PostgreSQL
+        nivel: 85
+      - nome: Oracle
+        nivel: 75
+      - nome: SQL Server
+        nivel: 75
+      - nome: Redis
+        nivel: 65
+  - nome: DevOps & Ferramentas
+    itens:
+      - nome: Docker
+        nivel: 80
+      - nome: Swagger/OpenAPI
+        nivel: 80
+      - nome: Git/GitHub
+        nivel: 90
+      - nome: Observabilidade básica
+        nivel: 60
+soft_skills:
+  - Trabalho em equipe
+  - Comunicação efetiva
+  - Resolução de problemas
+  - Mentoria
+  - Aprendizado contínuo
+  - Organização
+  - Responsabilidade

@@ -1,7 +1,24 @@
 
 <script setup lang="ts">
 // Buscar dados do currículo do arquivo YAML
-const { data: cv } = await useAsyncData('curriculo', () => queryContent('curriculo').findOne())
+interface Experiencia { cargo: string; empresa: string; periodo: string; localizacao: string; tipo: string; descricao: string; conquistas?: string[]; tecnologias?: string[] }
+interface Educacao { curso: string; instituicao: string; periodo: string; descricao?: string }
+interface Certificacao { nome: string; emissor: string; data: string; validade: string }
+interface Projeto { nome: string; descricao: string; resultado?: string; tecnologias: string[] }
+interface Habilidade { nome: string; nivel: number }
+interface Curriculo {
+  nome: string; titulo?: string; resumo?: string;
+  contato?: { email?: string; telefone?: string; linkedin?: string; github?: string; localizacao?: string };
+  experiencia?: Experiencia[];
+  educacao?: Educacao[];
+  certificacoes?: Certificacao[];
+  projetos_destaque?: Projeto[];
+  habilidades?: { backend?: Habilidade[]; frontend?: Habilidade[] };
+  soft_skills?: string[];
+  idiomas?: { idioma: string; nivel: string }[];
+}
+// @ts-ignore queryContent is auto-imported by Nuxt Content runtime
+const { data: cv } = await useAsyncData<Curriculo>('curriculo', () => queryContent('curriculo').findOne())
 
 useHead({
   title: 'Currículo | Gabriel Coelho',
@@ -12,13 +29,11 @@ useHead({
   ]
 })
 
+import { useToast } from '@/composables/useToast'
+import { useHead } from 'nuxt/app';
+const { push: pushToast } = useToast()
 const downloadPDF = () => {
-  // Implementar download do PDF aqui
-  useToast().add({
-    title: 'Em breve!',
-    description: 'Funcionalidade de download do PDF será implementada.',
-    color: 'blue'
-  })
+  pushToast({ title: 'Em breve!', description: 'Funcionalidade de download do PDF será implementada.' })
 }
 </script>
 
@@ -38,13 +53,7 @@ const downloadPDF = () => {
         </p>
         
         <div class="flex justify-center">
-          <UButton 
-            icon="i-heroicons-arrow-down-tray" 
-            size="lg"
-            @click="downloadPDF"
-          >
-            Baixar PDF
-          </UButton>
+          <UiButton size="lg" @click="downloadPDF">Baixar PDF</UiButton>
         </div>
       </div>
 
@@ -52,10 +61,9 @@ const downloadPDF = () => {
         <!-- Coluna Principal -->
         <div class="md:col-span-2 space-y-8">
           <!-- Experiência -->
-          <UCard>
+          <UiCard>
             <template #header>
               <h2 class="text-2xl font-semibold flex items-center">
-                <UIcon name="i-heroicons-briefcase" class="mr-2 text-primary-500" />
                 Experiência Profissional
               </h2>
             </template>
@@ -85,7 +93,7 @@ const downloadPDF = () => {
                   <h4 class="text-sm font-semibold text-gray-900 dark:text-white mb-2">Principais conquistas:</h4>
                   <ul class="space-y-1">
                     <li v-for="conquista in exp.conquistas" :key="conquista" class="flex items-start space-x-2 text-sm">
-                      <UIcon name="i-heroicons-check-circle" class="text-green-500 mt-0.5 flex-shrink-0" />
+                      <UiIcon name="i-heroicons-check-circle" class="text-green-500 mt-0.5 h-4 w-4 flex-shrink-0" />
                       <span class="text-gray-600 dark:text-gray-300">{{ conquista }}</span>
                     </li>
                   </ul>
@@ -93,17 +101,16 @@ const downloadPDF = () => {
                 
                 <!-- Tecnologias -->
                 <div v-if="exp.tecnologias" class="flex flex-wrap gap-2">
-                  <UBadge v-for="tech in exp.tecnologias" :key="tech" :label="tech" size="sm" variant="outline" />
+                  <UiBadge v-for="tech in exp.tecnologias" :key="tech" variant="outline">{{ tech }}</UiBadge>
                 </div>
               </div>
             </div>
-          </UCard>
+          </UiCard>
 
           <!-- Educação -->
-          <UCard>
+          <UiCard>
             <template #header>
               <h2 class="text-2xl font-semibold flex items-center">
-                <UIcon name="i-heroicons-academic-cap" class="mr-2 text-primary-500" />
                 Educação
               </h2>
             </template>
@@ -121,13 +128,12 @@ const downloadPDF = () => {
                 </p>
               </div>
             </div>
-          </UCard>
+          </UiCard>
 
           <!-- Certificações -->
-          <UCard v-if="cv?.certificacoes">
+          <UiCard v-if="cv?.certificacoes">
             <template #header>
               <h2 class="text-2xl font-semibold flex items-center">
-                <UIcon name="i-heroicons-shield-check" class="mr-2 text-primary-500" />
                 Certificações
               </h2>
             </template>
@@ -145,13 +151,12 @@ const downloadPDF = () => {
                 </p>
               </div>
             </div>
-          </UCard>
+          </UiCard>
 
           <!-- Projetos de Destaque -->
-          <UCard v-if="cv?.projetos_destaque">
+          <UiCard v-if="cv?.projetos_destaque">
             <template #header>
               <h2 class="text-2xl font-semibold flex items-center">
-                <UIcon name="i-heroicons-star" class="mr-2 text-primary-500" />
                 Projetos de Destaque
               </h2>
             </template>
@@ -168,27 +173,26 @@ const downloadPDF = () => {
                   {{ projeto.resultado }}
                 </p>
                 <div class="flex flex-wrap gap-2">
-                  <UBadge v-for="tech in projeto.tecnologias" :key="tech" :label="tech" size="sm" variant="soft" />
+                  <UiBadge v-for="tech in projeto.tecnologias" :key="tech" variant="secondary">{{ tech }}</UiBadge>
                 </div>
               </div>
             </div>
-          </UCard>
+          </UiCard>
         </div>
 
         <!-- Sidebar -->
         <div class="space-y-6">
           <!-- Contato -->
-          <UCard>
+          <UiCard>
             <template #header>
               <h2 class="text-xl font-semibold flex items-center">
-                <UIcon name="i-heroicons-phone" class="mr-2 text-primary-500" />
                 Contato
               </h2>
             </template>
             
             <div class="space-y-3">
               <div class="flex items-center space-x-2">
-                <UIcon name="i-heroicons-envelope" class="text-gray-500" />
+                <UiIcon name="i-heroicons-envelope" class="text-gray-500 h-4 w-4" />
                 <a 
                   :href="`mailto:${cv?.contato?.email}`" 
                   class="text-sm text-gray-700 dark:text-gray-300 hover:text-primary-500 transition-colors"
@@ -198,21 +202,21 @@ const downloadPDF = () => {
               </div>
               
               <div v-if="cv?.contato?.telefone" class="flex items-center space-x-2">
-                <UIcon name="i-heroicons-phone" class="text-gray-500" />
+                <UiIcon name="i-heroicons-phone" class="text-gray-500 h-4 w-4" />
                 <span class="text-sm text-gray-700 dark:text-gray-300">
                   {{ cv.contato.telefone }}
                 </span>
               </div>
               
               <div v-if="cv?.contato?.localizacao" class="flex items-center space-x-2">
-                <UIcon name="i-heroicons-map-pin" class="text-gray-500" />
+                <UiIcon name="i-heroicons-map-pin" class="text-gray-500 h-4 w-4" />
                 <span class="text-sm text-gray-700 dark:text-gray-300">
                   {{ cv.contato.localizacao }}
                 </span>
               </div>
               
               <div class="flex items-center space-x-2">
-                <UIcon name="i-simple-icons-linkedin" class="text-gray-500" />
+                <UiIcon name="i-simple-icons-linkedin" class="text-gray-500 h-4 w-4" />
                 <a 
                   :href="cv?.contato?.linkedin" 
                   target="_blank"
@@ -223,7 +227,7 @@ const downloadPDF = () => {
               </div>
               
               <div class="flex items-center space-x-2">
-                <UIcon name="i-simple-icons-github" class="text-gray-500" />
+                <UiIcon name="i-simple-icons-github" class="text-gray-500 h-4 w-4" />
                 <a 
                   :href="cv?.contato?.github" 
                   target="_blank"
@@ -233,13 +237,12 @@ const downloadPDF = () => {
                 </a>
               </div>
             </div>
-          </UCard>
+          </UiCard>
 
           <!-- Habilidades Backend -->
-          <UCard v-if="cv?.habilidades?.backend">
+          <UiCard v-if="cv?.habilidades?.backend">
             <template #header>
               <h2 class="text-xl font-semibold flex items-center">
-                <UIcon name="i-heroicons-server" class="mr-2 text-primary-500" />
                 Backend
               </h2>
             </template>
@@ -247,16 +250,15 @@ const downloadPDF = () => {
             <div class="space-y-3">
               <div v-for="skill in cv.habilidades.backend" :key="skill.nome" class="flex justify-between items-center">
                 <span class="text-sm font-medium">{{ skill.nome }}</span>
-                <UBadge :label="`${skill.nivel}%`" variant="soft" size="sm" />
+                <UiBadge variant="outline">{{ skill.nivel }}%</UiBadge>
               </div>
             </div>
-          </UCard>
+          </UiCard>
 
           <!-- Habilidades Frontend -->
-          <UCard v-if="cv?.habilidades?.frontend">
+          <UiCard v-if="cv?.habilidades?.frontend">
             <template #header>
               <h2 class="text-xl font-semibold flex items-center">
-                <UIcon name="i-heroicons-computer-desktop" class="mr-2 text-primary-500" />
                 Frontend
               </h2>
             </template>
@@ -264,36 +266,28 @@ const downloadPDF = () => {
             <div class="space-y-3">
               <div v-for="skill in cv.habilidades.frontend" :key="skill.nome" class="flex justify-between items-center">
                 <span class="text-sm font-medium">{{ skill.nome }}</span>
-                <UBadge :label="`${skill.nivel}%`" variant="soft" size="sm" />
+                <UiBadge variant="outline">{{ skill.nivel }}%</UiBadge>
               </div>
             </div>
-          </UCard>
+          </UiCard>
 
           <!-- Soft Skills -->
-          <UCard v-if="cv?.soft_skills">
+          <UiCard v-if="cv?.soft_skills">
             <template #header>
               <h2 class="text-xl font-semibold flex items-center">
-                <UIcon name="i-heroicons-user-group" class="mr-2 text-primary-500" />
                 Soft Skills
               </h2>
             </template>
             
             <div class="flex flex-wrap gap-2">
-              <UBadge 
-                v-for="skill in cv.soft_skills" 
-                :key="skill" 
-                :label="skill" 
-                variant="outline"
-                size="sm"
-              />
+              <UiBadge v-for="skill in cv.soft_skills" :key="skill" variant="outline">{{ skill }}</UiBadge>
             </div>
-          </UCard>
+          </UiCard>
 
           <!-- Idiomas -->
-          <UCard v-if="cv?.idiomas">
+          <UiCard v-if="cv?.idiomas">
             <template #header>
               <h2 class="text-xl font-semibold flex items-center">
-                <UIcon name="i-heroicons-language" class="mr-2 text-primary-500" />
                 Idiomas
               </h2>
             </template>
@@ -301,10 +295,10 @@ const downloadPDF = () => {
             <div class="space-y-3">
               <div v-for="idioma in cv.idiomas" :key="idioma.idioma" class="flex justify-between items-center">
                 <span class="text-sm font-medium">{{ idioma.idioma }}</span>
-                <UBadge :label="idioma.nivel" variant="soft" size="sm" />
+                <UiBadge variant="secondary">{{ idioma.nivel }}</UiBadge>
               </div>
             </div>
-          </UCard>
+          </UiCard>
         </div>
       </div>
     </div>
