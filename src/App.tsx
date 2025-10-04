@@ -1,6 +1,6 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 import avatarImg from "./assets/image-avatar.png";
-import computerImg from "./assets/computer-4795762.jpg";
+import computerImg from "./assets/laptop-1846277.jpg";
 import { Navbar } from "./components/navibar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Code2, Coffee, Users } from "lucide-react";
