@@ -98,7 +98,7 @@ export default function Resume() {
           </div>
 
           <div>
-            <h2 className="text-2xl font-semibold mb-4">Experiência</h2>
+            <h2 className="text-2xl font-semibold mt-4 mb-4">Experiência</h2>
             <div className="space-y-4">
               {cv.experiencia.map((exp: Experiencia, i: number) => (
                 <Card key={i}>
