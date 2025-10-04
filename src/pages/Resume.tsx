@@ -82,7 +82,7 @@ export default function Resume() {
 
           <div>
             <h2 className="text-2xl font-semibold mb-4">Formação Acadêmica</h2>
-            <ul className="space-y-3">
+            <ul className="space-y-4">
               {cv.formacao.map((form: Formacao, i: number) => (
                 <li key={i} className="border-l-2 border-primary pl-4 py-1">
                   <span className="font-medium text-lg">{form.curso}</span>
