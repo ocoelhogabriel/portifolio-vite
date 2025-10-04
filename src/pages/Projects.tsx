@@ -29,13 +29,13 @@ export default function Projects() {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
-      <section className="flex-1 flex flex-col items-center px-4 py-12">
-        <img src={codingImg} alt="Coding" className="w-full max-w-3xl h-48 md:h-64 object-cover rounded-xl shadow-md mb-8" />
-        <h1 className="text-3xl md:text-4xl font-bold mb-8 text-center">Projetos</h1>
+      <section className="flex-1 flex flex-col items-center px-2 sm:px-4 py-6">
+        <img src={codingImg} alt="Coding" className="w-full max-w-2xl h-32 sm:h-48 md:h-64 object-cover rounded-xl shadow-md mb-6" />
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 text-center">Projetos</h1>
         {loading ? (
           <p className="text-muted-foreground">Carregando projetos...</p>
         ) : (
-          <div className="w-full max-w-5xl grid gap-6 md:grid-cols-2">
+          <div className="w-full max-w-5xl grid gap-4 sm:gap-6 grid-cols-1 md:grid-cols-2">
             {repos.map(repo => (
               <Card key={repo.id} className="transition-shadow hover:shadow-lg">
                 <a href={repo.html_url} target="_blank" rel="noopener noreferrer" className="block">

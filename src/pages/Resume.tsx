@@ -23,8 +23,8 @@ export default function Resume() {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
-      <section className="flex-1 flex flex-col items-center px-4 py-6">
-        <div id="curriculo-content" className="w-full max-w-4xl space-y-4">
+      <section className="flex-1 flex flex-col items-center px-2 sm:px-4 py-4 sm:py-6">
+        <div id="curriculo-content" className="w-full max-w-4xl space-y-4 bg-white/90 rounded-lg shadow-md p-2 sm:p-6">
           <h1 className="text-3xl md:text-4xl font-bold -mb-4">{cv.nome}</h1>
           <h3 className="text-xl md:text-xl font-medium mb-1">
             {cv.profissao}
@@ -121,11 +121,11 @@ export default function Resume() {
 
           <div>
             <h2 className="text-2xl font-semibold mb-4">Habilidades</h2>
-            <div className="flex gap-2 flex-wrap">
+            <div className="flex gap-1 sm:gap-2 flex-wrap justify-center">
               {cv.habilidades.map((skill: string, i: number) => (
                 <div
                   key={i}
-                  className="px-2 py-0.5 bg-accent rounded text-xs font-medium shadow-sm flex items-center mb-1 border border-accent-foreground/10 hover:bg-accent/80 transition-colors"
+                  className="px-2 py-0.5 bg-accent rounded text-[10px] sm:text-xs font-medium shadow-sm flex items-center mb-1 border border-accent-foreground/10 hover:bg-accent/80 transition-colors"
                   style={{ lineHeight: 1.2 }}
                 >
                   {skill}
