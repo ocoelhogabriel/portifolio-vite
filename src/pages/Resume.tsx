@@ -79,6 +79,24 @@ export default function Resume() {
               {cv.resumo}
             </p>
           </div>
+
+          <div>
+            <h2 className="text-2xl font-semibold mb-4">Formação Acadêmica</h2>
+            <ul className="space-y-3">
+              {cv.formacao.map((form: Formacao, i: number) => (
+                <li key={i} className="border-l-2 border-primary pl-4 py-1">
+                  <span className="font-medium text-lg">{form.curso}</span>
+                  <p className="text-muted-foreground">{form.instituicao}</p>
+                  {form.periodo && (
+                    <span className="text-sm text-muted-foreground">
+                      {form.periodo}
+                    </span>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+
           <div>
             <h2 className="text-2xl font-semibold mb-4">Experiência</h2>
             <div className="space-y-4">
@@ -100,23 +118,6 @@ export default function Resume() {
                 </Card>
               ))}
             </div>
-          </div>
-
-          <div>
-            <h2 className="text-2xl font-semibold mb-4">Formação Acadêmica</h2>
-            <ul className="space-y-3">
-              {cv.formacao.map((form: Formacao, i: number) => (
-                <li key={i} className="border-l-2 border-primary pl-4 py-1">
-                  <span className="font-medium text-lg">{form.curso}</span>
-                  <p className="text-muted-foreground">{form.instituicao}</p>
-                  {form.periodo && (
-                    <span className="text-sm text-muted-foreground">
-                      {form.periodo}
-                    </span>
-                  )}
-                </li>
-              ))}
-            </ul>
           </div>
 
           <div>
