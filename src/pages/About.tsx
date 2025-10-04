@@ -1,18 +1,18 @@
 import { Navbar } from "@/components/navibar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Code2, Coffee, Users } from "lucide-react";
-import computerImg from "../assets/computer-4795762.jpg";
+import computerImg from "../assets/laptop-1846277.jpg";
 
 export default function About() {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
-      <section className="flex-1 flex flex-col items-center justify-center px-4 py-16">
+      <section className="flex-1 flex flex-col items-center justify-center px-4 py-12">
           <div className="w-full flex flex-col items-center mb-8">
             <img
               src={computerImg}
               alt="Gabriel trabalhando"
-              className="w-full max-w-2xl h-48 md:h-64 object-cover rounded-xl shadow-md mb-4"
+              className="w-full max-w-3xl h-48 md:h-64 object-cover rounded-xl shadow-md mb-4"
             />
           </div>
         <Card className="w-full max-w-3xl">
