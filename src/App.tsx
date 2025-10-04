@@ -6,7 +6,9 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 export default function App() {
   return (
     <div className="min-h-screen flex flex-col">
-      <Navbar />
+      <header>
+        <Navbar />
+      </header>
       <main className="flex-1 flex flex-col items-center justify-center px-4 py-16">
         <div className="-mb-6 object-top">
           <Avatar>
@@ -18,7 +20,7 @@ export default function App() {
             <AvatarFallback>GC</AvatarFallback>
           </Avatar>
         </div>
-        <div className="w-full flex justify-center"> 
+        <div className="w-full flex justify-center">
           <Card className="w-full max-w-2xl">
             <CardHeader>
               <CardTitle className="text-4xl md:text-5xl font-bold text-center">

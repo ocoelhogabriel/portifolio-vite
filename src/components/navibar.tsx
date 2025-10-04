@@ -12,7 +12,7 @@ const navLinks = [
 export function Navbar() {
   const location = useLocation();
   return (
-    <nav className="w-full flex justify-center border-b border-border bg-card/80 backdrop-blur-sm sticky top-0 z-50 shadow-sm">
+    <nav className="w-full flex justify-center border-b border-border bg-card/80 backdrop-blur-sm sticky top-0 z-50 shadow-sm print:hidden">
       <NavigationMenu className="max-w-6xl w-full px-4">
         <NavigationMenuList className="flex flex-row gap-1 md:gap-4 mx-auto py-3">
           {navLinks.map((link) => (

@@ -1,5 +1,6 @@
 {
-  "nome": "Gabriel Coelho",
+  "nome": "Gabriel Oliveria de Sousa Coelho",
+  "profissao": "Desenvolvedor Backend | Spring Boot | Java ",
   "resumo": "Minha experiência é voltada principalmente para o backend em Java e Spring Boot, incluindo integrações complexas via APIs REST, WebSockets e protocolos TCP/IP. Também atuo com bancos de dados relacionais como PostgreSQL, SQL Server e Oracle, aplicando boas práticas de modelagem, otimização e versionamento. No frontend, possuo conhecimento em React e Next.js, que utilizo de forma complementar em projetos. Além disso, aplico práticas de DevOps, testes, logs estruturados e monitoramento para garantir confiabilidade em produção.",
   "experiencia": [
     {
