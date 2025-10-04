@@ -1,5 +1,6 @@
 import { Navbar } from "@/components/navibar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import techImg from "../assets/technology-785742.jpg";
 import { Mail, Phone, Linkedin, Github } from "lucide-react";
 
 export default function Contact() {
@@ -7,6 +8,7 @@ export default function Contact() {
     <div className="min-h-screen flex flex-col">
       <Navbar />
       <section className="flex-1 flex flex-col items-center justify-center px-4 py-12">
+        <img src={techImg} alt="Tecnologia" className="w-full max-w-2xl h-40 md:h-56 object-cover rounded-xl shadow-md mb-8" />
         <Card className="w-full max-w-2xl">
           <CardHeader>
             <CardTitle className="text-3xl md:text-4xl font-bold text-center">Contato</CardTitle>

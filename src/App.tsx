@@ -1,5 +1,6 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 import avatarImg from "./assets/image-avatar.png";
+import computerImg from "./assets/computer-4795762.jpg";
 import { Navbar } from "./components/navibar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
@@ -10,12 +11,13 @@ export default function App() {
         <Navbar />
       </header>
       <main className="flex-1 flex flex-col items-center justify-center px-4 py-16">
-        <div className="-mb-6 object-top">
+        <div className="w-full flex flex-col items-center mb-8">
+          <img src={computerImg} alt="Computador" className="w-full max-w-2xl h-48 md:h-64 object-cover rounded-xl shadow-md mb-4" />
           <Avatar>
             <AvatarImage
               src={avatarImg}
               alt="@ocoelhogabriel"
-              className="rounded-full w-72 h-72 md:w-96 md:h-96 lg:w-[32rem] lg:h-[32rem] object-cover"
+              className="rounded-full w-40 h-40 md:w-56 md:h-56 lg:w-72 lg:h-72 object-cover border-4 border-white shadow-lg -mt-20 md:-mt-28 lg:-mt-36 bg-white"
             />
             <AvatarFallback>GC</AvatarFallback>
           </Avatar>

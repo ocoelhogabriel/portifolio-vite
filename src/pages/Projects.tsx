@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import codingImg from "../assets/coding-924920.jpg";
 import { Navbar } from "@/components/navibar";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 
@@ -25,11 +26,11 @@ export default function Projects() {
         setLoading(false);
       });
   }, []);
-
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
       <section className="flex-1 flex flex-col items-center px-4 py-12">
+        <img src={codingImg} alt="Coding" className="w-full max-w-3xl h-48 md:h-64 object-cover rounded-xl shadow-md mb-8" />
         <h1 className="text-3xl md:text-4xl font-bold mb-8 text-center">Projetos</h1>
         {loading ? (
           <p className="text-muted-foreground">Carregando projetos...</p>

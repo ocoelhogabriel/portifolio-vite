@@ -1,6 +1,7 @@
 import { Navbar } from "@/components/navibar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import cv from "../data/curriculo.json";
+import laptopImg from "../assets/laptop-1846277.jpg";
 import { Mail, Phone, Linkedin, Github } from "lucide-react";
 
 interface Experiencia {
@@ -23,13 +24,7 @@ export default function Resume() {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
-      <section className="flex-1 flex flex-col items-center px-4 py-12">
-        <button
-          onClick={handlePrint}
-          className="mb-6 px-4 py-2 bg-primary text-white rounded hover:bg-primary/90 print:hidden"
-        >
-          Imprimir currículo
-        </button>
+      <section className="flex-1 flex flex-col items-center px-4 py-6">
         <div id="curriculo-content" className="w-full max-w-4xl space-y-4">
           <h1 className="text-3xl md:text-4xl font-bold -mb-4">{cv.nome}</h1>
           <h3 className="text-xl md:text-xl font-medium mb-1">
@@ -81,7 +76,7 @@ export default function Resume() {
           </div>
           <div>
             <h2 className="text-2xl font-semibold mb-4">Resumo</h2>
-            <p className="text-sm md:text-base text-muted-foreground mb-6">
+            <p className="text-sm md:text-sm text-muted-foreground mb-6">
               {cv.resumo}
             </p>
           </div>
@@ -99,7 +94,9 @@ export default function Resume() {
                     </span>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-muted-foreground">{exp.descricao}</p>
+                    <p className="text-muted-foreground text-sm">
+                      {exp.descricao}
+                    </p>
                   </CardContent>
                 </Card>
               ))}
@@ -125,19 +122,33 @@ export default function Resume() {
 
           <div>
             <h2 className="text-2xl font-semibold mb-4">Habilidades</h2>
-            <ul className="flex gap-2 flex-wrap">
+            <div className="flex gap-2 flex-wrap">
               {cv.habilidades.map((skill: string, i: number) => (
-                <li
+                <div
                   key={i}
-                  className="px-3 py-1.5 bg-accent rounded-md text-sm font-medium hover:bg-accent/80 transition-colors"
+                  className="px-2 py-0.5 bg-accent rounded text-xs font-medium shadow-sm flex items-center mb-1 border border-accent-foreground/10 hover:bg-accent/80 transition-colors"
+                  style={{ lineHeight: 1.2 }}
                 >
                   {skill}
-                </li>
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
         </div>
       </section>
+      <div className="w-full flex flex-col items-center mb-8">
+        <button
+          onClick={handlePrint}
+          className="mb-6 px-4 py-2 bg-primary text-white rounded hover:bg-primary/90 print:hidden"
+        >
+          Imprimir currículo
+        </button>
+        <img
+          src={laptopImg}
+          alt="Laptop"
+          className="w-full max-w-2xl h-40 md:h-56 object-cover rounded-xl shadow-md mb-8 print:hidden"
+        />
+      </div>
     </div>
   );
 }
