@@ -30,7 +30,7 @@ export default function Resume() {
             {cv.profissao}
           </h3>
           <div>
-            <h2 className="text-2xl font-semibold mb-2">Contato</h2>
+            <h2 className="text-2xl font-semibold mb-4">Contato</h2>
             <ul className="space-y-1 text-sm md:text-base">
               <li className="flex items-center gap-3">
                 <Phone className="w-4 h-4 text-primary" />
@@ -75,7 +75,7 @@ export default function Resume() {
           </div>
           <div>
             <h2 className="text-2xl font-semibold mb-4">Resumo</h2>
-            <p className="text-sm md:text-sm text-muted-foreground mb-6">
+            <p className="text-base md:text-base text-muted-foreground mb-6">
               {cv.resumo}
             </p>
           </div>
@@ -111,7 +111,7 @@ export default function Resume() {
                     </span>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-muted-foreground text-sm">
+                    <p className="text-muted-foreground text-base">
                       {exp.descricao}
                     </p>
                   </CardContent>
