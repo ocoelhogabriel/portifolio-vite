@@ -23,7 +23,7 @@ export default function Resume() {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
-      <section className="flex-1 flex flex-col items-center px-2 sm:px-4 py-4 sm:py-6">
+      <section className="flex-1 flex flex-col items-center px-2 sm:px-4 py-6 sm:py-8">
         <div id="curriculo-content" className="w-full max-w-4xl space-y-4 bg-white/90 rounded-lg shadow-md p-2 sm:p-6">
           <h1 className="text-3xl md:text-4xl font-bold -mb-4">{cv.nome}</h1>
           <h3 className="text-xl md:text-xl font-medium mb-1">
