@@ -1,7 +1,6 @@
 import { Navbar } from "@/components/navibar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import cv from "../data/curriculo.json";
-import laptopImg from "../assets/laptop-1846277.jpg";
 import { Mail, Phone, Linkedin, Github } from "lucide-react";
 
 interface Experiencia {
@@ -143,11 +142,7 @@ export default function Resume() {
         >
           Imprimir currículo
         </button>
-        <img
-          src={laptopImg}
-          alt="Laptop"
-          className="w-full max-w-2xl h-40 md:h-56 object-cover rounded-xl shadow-md mb-8 print:hidden"
-        />
+        
       </div>
     </div>
   );

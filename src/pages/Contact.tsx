@@ -1,6 +1,7 @@
 import { Navbar } from "@/components/navibar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import techImg from "../assets/technology-785742.jpg";
+import techImg from "../assets/laptop-1846277.jpg";
+
 import { Mail, Phone, Linkedin, Github } from "lucide-react";
 
 export default function Contact() {
