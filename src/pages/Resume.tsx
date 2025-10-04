@@ -30,15 +30,15 @@ export default function Resume() {
             {cv.profissao}
           </h3>
           <div>
-            <h2 className="text-2xl font-semibold mb-4">Contato</h2>
-            <ul className="space-y-2 text-sm md:text-base">
+            <h2 className="text-2xl font-semibold mb-2">Contato</h2>
+            <ul className="space-y-1 text-sm md:text-base">
               <li className="flex items-center gap-3">
-                <Phone className="w-5 h-5 text-primary" />
+                <Phone className="w-4 h-4 text-primary" />
                 <span className="font-medium">Telefone:</span>
                 <span className="text-muted-foreground">(19) 99735-7450</span>
               </li>
               <li className="flex items-center gap-3">
-                <Mail className="w-5 h-5 text-primary" />
+                <Mail className="w-4 h-4 text-primary" />
                 <span className="font-medium">Email:</span>
                 <a
                   href="mailto:gabriel.coelho.hgc@outlook.com.br"
@@ -48,7 +48,7 @@ export default function Resume() {
                 </a>
               </li>
               <li className="flex items-center gap-3">
-                <Linkedin className="w-5 h-5 text-primary" />
+                <Linkedin className="w-4 h-4 text-primary" />
                 <span className="font-medium">LinkedIn:</span>
                 <a
                   href="https://www.linkedin.com/in/ocoelhogabriel"
@@ -60,7 +60,7 @@ export default function Resume() {
                 </a>
               </li>
               <li className="flex items-center gap-3">
-                <Github className="w-5 h-5 text-primary" />
+                <Github className="w-4 h-4 text-primary" />
                 <span className="font-medium">GitHub:</span>
                 <a
                   href="https://github.com/ocoelhogabriel"
