@@ -6,9 +6,11 @@ import "./App.css";
 import Contact from "./pages/Contact";
 import Projects from "./pages/Projects";
 import Resume from "./pages/Resume";
+import { Analytics } from "@vercel/analytics/next";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
+    <Analytics />
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />} />
