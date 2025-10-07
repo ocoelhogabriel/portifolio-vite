@@ -1,18 +1,20 @@
 
-import { Menu } from "lucide-react";
+import { Menu, Moon, Sun } from "lucide-react";
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { useTheme } from "@/lib/useTheme";
 
 const navLinks = [
   { to: "/", label: "Home" },
-  { to: "/projects", label: "Projetos" },
   { to: "/resume", label: "Currículo" },
-  { to: "/contact", label: "Contato" },
+  { to: "/projects", label: "Projetos" },
+  // { to: "/contact", label: "Contato" },
 ];
 
 export function Navbar() {
   const location = useLocation();
   const [open, setOpen] = useState(false);
+  const { theme, setTheme } = useTheme();
   return (
     <nav className="w-full border-b border-border bg-card/80 backdrop-blur-sm sticky top-0 z-50 shadow-sm print:hidden">
       <div className="max-w-6xl w-full mx-auto flex items-center justify-between px-2 sm:px-4 py-2">
@@ -34,6 +36,19 @@ export function Navbar() {
               {link.label}
             </Link>
           ))}
+          {/* Botão de alternância de tema */}
+          <button
+            className="ml-2 px-2 py-2 rounded-md hover:bg-accent transition-colors focus:outline-none focus:ring"
+            aria-label="Alternar tema"
+            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            tabIndex={0}
+          >
+            {theme === "dark" ? (
+              <Sun className="w-5 h-5 text-yellow-400" />
+            ) : (
+              <Moon className="w-5 h-5 text-blue-700" />
+            )}
+          </button>
         </div>
       </div>
       {/* Mobile menu */}
@@ -53,6 +68,18 @@ export function Navbar() {
               {link.label}
             </Link>
           ))}
+          {/* Botão de alternância de tema no menu mobile */}
+          <button
+            className="mt-2 px-2 py-2 rounded-md hover:bg-accent transition-colors w-fit"
+            aria-label="Alternar tema"
+            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+          >
+            {theme === "dark" ? (
+              <Sun className="w-5 h-5 text-yellow-400" />
+            ) : (
+              <Moon className="w-5 h-5 text-blue-700" />
+            )}
+          </button>
         </div>
       )}
     </nav>
