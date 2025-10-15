@@ -48,7 +48,7 @@ export default function Home() {
                 Gabriel Coelho
               </h1>
               <h2 className="text-lg sm:text-xl md:text-2xl font-medium text-muted-foreground dark:text-gray-300 mt-1">
-                Desenvolvedor Backend • Java • Spring Boot
+                Engenheiro de Software • Java • Backend Java & Spring Boot
               </h2>
             </div>
           </div>
