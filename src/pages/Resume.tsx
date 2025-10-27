@@ -110,7 +110,7 @@ export default function Resume() {
             <h2 className="text-2xl font-semibold mb-4 text-primary dark:text-blue-400 print:!text-black">
               Resumo
             </h2>
-            <p className="text-base md:text-base text-muted-foreground dark:text-gray-300 mb-6 print:!text-black">
+            <p className="text-base md:text-base text-muted-foreground dark:text-gray-300 mb-6 print:!text-black text-justify leading-relaxed">
               {cv.resumo}
             </p>
           </div>
@@ -160,7 +160,7 @@ export default function Resume() {
                     </span>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-muted-foreground dark:text-gray-300 text-base print:!text-black">
+                    <p className="text-muted-foreground text-justify dark:text-gray-300 text-base print:!text-black">
                       {exp.descricao}
                     </p>
                   </CardContent>
